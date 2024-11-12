@@ -3,20 +3,20 @@ kind: Deployment
 metadata:
   name: flask-app-deployment
   labels:
-    app: Flask-Portfolio
+    app: flask-portfolio
 spec:
   replicas: 3  # Number of instances you want to run
   selector:
     matchLabels:
-      app: Flask-Portfolio
+      app: flask-portfolio
   template:
     metadata:
       labels:
-        app: Flask-Portfolio
+        app: flask-portfolio
     spec:
       containers:
-        - name: Flask-Portfolio
-          image: akscr01sample.azurecr.io/Flask-Portfolio:latest  # Specify your image from ACR
+        - name: flask-portfolio
+          image: akscr01sample.azurecr.io/flask-portfolio:latest  # Specify your image from ACR
           ports:
             - containerPort: 5000  # Flask app runs on port 5000 inside the container
           imagePullPolicy: Always  # Always pull the latest image from ACR
@@ -29,7 +29,7 @@ metadata:
   name: flask-app-service
 spec:
   selector:
-    app: Flask-Portfolio
+    app: flask-portfolio
   ports:
     - protocol: TCP
       port: 80  # The external port
